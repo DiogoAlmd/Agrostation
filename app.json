@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "agrostation",
+    "slug": "agrostation",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
