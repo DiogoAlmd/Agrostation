@@ -12,6 +12,9 @@ interface Props {
     placeholderTextColor?: string;
     borderRadius?: number;
     placeholder: string;
+    mode?: any;
+    password?: boolean;
+    onChangeText?: (text: string) => void;
 }
 
 
@@ -24,7 +27,10 @@ export const CustomInput:React.FC<Props> = ({
   color,
   borderRadius,
   placeholder,
-  placeholderTextColor
+  placeholderTextColor,
+  mode,
+  password,
+  onChangeText
 })  => {
 
 const styles = StyleSheet.create({
@@ -44,6 +50,9 @@ return (
     <TextInput style={styles.input} 
                placeholder={placeholder} 
                placeholderTextColor={placeholderTextColor}
+               secureTextEntry={password}
+               onChangeText={onChangeText}
+               keyboardType={mode}
     />      
   )
 }

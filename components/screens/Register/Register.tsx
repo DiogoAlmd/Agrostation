@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { View, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from "react-native"
 import { CustomInput } from "../../CustomInput/CustomInput";
 import { colors } from "../../../assets/colors";
@@ -5,11 +6,40 @@ import { CustomButton } from "../../CustomButton/CustomButton";
 import { CustomText } from "../../CustomText/CustomText";
 import { StackTypes } from '../../routes/StackNavigator';
 import { useNavigation } from "@react-navigation/native"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../../src/config/firebase";
+import { doc, setDoc } from 'firebase/firestore';
 
 
 export const Register: React.FC = () => {
 
+  const [email, setEmail] = useState("");
+  const [password, setPass] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [userID, setUserUid] = useState("");
   const navigation = useNavigation<StackTypes>();
+  
+  const handleSignUp = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      setUserUid(user.uid);
+
+      await setDoc(doc(db, "users", user.uid), {
+        email,
+        telefone,
+        nome,
+        cpf,
+        userID
+      });
+      navigation.navigate("Logged")
+      console.log("Usuário cadastrado com sucesso:", user);
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+    }
+  };
 
   return (
   <ScrollView contentContainerStyle={styles.scrollViewContent} keyboardShouldPersistTaps="handled">
@@ -25,16 +55,16 @@ export const Register: React.FC = () => {
     </View>
 
     <KeyboardAvoidingView style={styles.inputContainer} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Email" color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
-      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Telefone" color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
-      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Nome completo" color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
-      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="CPF" color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
+      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Email" onChangeText={(text) => setEmail(text)} color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
+      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Telefone" onChangeText={(text) => setTelefone(text)} color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
+      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Nome completo" onChangeText={(text) => setNome(text)} color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
+      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="CPF" onChangeText={(text) => setCpf(text)} color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
       <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Senha" color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
-      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Confirmar senha" color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
+      <CustomInput height={50} width={315} backgroundColor={colors.pinkColor} placeholder="Confirmar senha" onChangeText={(text) => setPass(text)} color={colors.greyColor} placeholderTextColor={colors.greyColor}/>
     </KeyboardAvoidingView>
 
     <View style={styles.buttonContainer}>
-      <CustomButton title="Confirmar" width={320} height={50} backgroundColor={colors.primaryColor} color={colors.whiteColor} paddingV={13} paddingH={20} borderRadius={50} onPress={() => navigation.navigate("Logged")}/>
+      <CustomButton title="Confirmar" onPress={handleSignUp} width={320} height={50} backgroundColor={colors.primaryColor} color={colors.whiteColor} paddingV={13} paddingH={20} borderRadius={50}/>
     </View>
   </View>
   </ScrollView>

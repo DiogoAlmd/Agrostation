@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { View, StyleSheet, Image } from 'react-native';
 import { CustomInput } from '../../CustomInput/CustomInput';
 import { colors } from "../../../assets/colors";
@@ -5,10 +6,30 @@ import { CustomButton } from '../../CustomButton/CustomButton';
 import { CustomText } from '../../CustomText/CustomText';
 import { StackTypes } from '../../routes/StackNavigator';
 import { useNavigation } from "@react-navigation/native"
-
+import { auth } from "../../../src/config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export const SignIn: React.FC = () => {
-    const navigation = useNavigation<StackTypes>()
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [errorLogin, setErrorLogin] = useState(false);
+  const navigation = useNavigation<StackTypes>();
+    auth;
+    const login = () => {
+                signInWithEmailAndPassword(auth, email, pass)
+                  .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    // navigation.navigate("Tab")
+                    // ...
+                  })
+                  .catch((error) => {
+                    setErrorLogin(true)
+                    const errorCode = error.code;
+                    const errorMessage = error.message
+                    console.log("login incorreto" + errorCode + errorMessage);
+                  });
+    }
 
     return (
         <View style={styles.wrapper}>
@@ -30,7 +51,8 @@ export const SignIn: React.FC = () => {
 
           <View style={styles.inputContainer}>
             <CustomInput 
-            placeholder="Email" 
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
             height={50} 
             width={340} 
             borderColor={colors.primaryColor} 
@@ -40,7 +62,8 @@ export const SignIn: React.FC = () => {
             />
 
             <CustomInput 
-            placeholder="Senha" 
+            placeholder="Senha"
+            onChangeText={(text) => setPass(text)}
             height={50} 
             width={340} 
             borderColor={colors.primaryColor} 
@@ -51,7 +74,8 @@ export const SignIn: React.FC = () => {
           </View>
 
           <View style={styles.buttonContainer}>
-            <CustomButton title="Entrar" 
+            <CustomButton title="Entrar"
+                          onPress={login}
                           backgroundColor={colors.primaryColor}
                           color={colors.whiteColor}
                           width={320}
@@ -71,9 +95,6 @@ export const SignIn: React.FC = () => {
         </View>
     );
 }
-
-
-
 
   const styles = StyleSheet.create({
     wrapper: {
