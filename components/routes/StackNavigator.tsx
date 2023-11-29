@@ -5,6 +5,7 @@ import { Home } from "../screens/Home/Home";
 import { SignIn } from "../screens/SignIn/SignIn";
 import { CreatedAccount } from "../screens/CreatedAccount/CreatedAccount";
 import { Logged } from "../screens/Logged/Logged";
+import { MyTab } from "./TabNavigator";
 
 
 
@@ -26,7 +27,7 @@ export const MyStack: React.FC = () => {
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
       <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
-      <Stack.Screen name="Logged" component={Logged} options={{ headerShown: false}}/>
+      <Stack.Screen name="Logged" component={MyTab} options={{ headerShown: false}}/>
       <Stack.Screen name="CreatedAccount" component={CreatedAccount} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );

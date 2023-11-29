@@ -39,10 +39,10 @@ export const Logged: React.FC = () => {
           <View style={styles.discoverContainer}>
             <View style={styles.cardsWrapper}>
                 <View style={styles.cardContainer}>
-                    <Image source={require("../../../assets/por-do-sol.png")} style={styles.cardImage} resizeMode="contain"/>
+                    <Image source={require("../../../assets/cafe.png")} style={styles.cardImage} resizeMode="cover"/>
                     <View style={styles.card}>
                         <View style={styles.cardText}>
-                            <CustomText text="Nordeste" color={colors.darkBlueColor} fontWeight="bold"/>
+                            <CustomText text="Café Expresso" color={colors.darkBlueColor} fontWeight="bold"/>
                             <CustomText text="Confira artigos sobre o tema" color={colors.leadGrey}/>
                         </View>
 
@@ -53,7 +53,7 @@ export const Logged: React.FC = () => {
                 </View>
 
                     <View style={styles.cardContainer}>
-                        <Image source={require("../../../assets/fazenda.png")} style={styles.cardImage} resizeMode="contain"/>
+                        <Image source={require("../../../assets/fazenda.png")} style={styles.cardImage} resizeMode="cover"/>
                         <View style={styles.card}>
                             <View style={styles.cardText}>
                                 <CustomText text="Sudeste" color={colors.darkBlueColor} fontWeight="bold"/>
@@ -70,10 +70,10 @@ export const Logged: React.FC = () => {
 
             <View style={styles.cardsWrapper}>
                 <View style={styles.cardContainer}>
-                    <Image source={require("../../../assets/cafe.png")} style={styles.cardImage} resizeMode="contain"/>
+                    <Image source={require("../../../assets/safra.png")} style={styles.cardImage} resizeMode="cover"/>
                     <View style={styles.card}>
                         <View style={styles.cardText}>
-                            <CustomText text="Nordeste" color={colors.darkBlueColor} fontWeight="bold"/>
+                            <CustomText text="Safra em alta" color={colors.darkBlueColor} fontWeight="bold"/>
                             <CustomText text="Confira artigos sobre o tema" color={colors.leadGrey}/>
                         </View>
 
@@ -84,10 +84,10 @@ export const Logged: React.FC = () => {
                 </View>
 
                     <View style={styles.cardContainer}>
-                        <Image source={require("../../../assets/floresta.png")} style={styles.cardImage} resizeMode="contain"/>
+                        <Image source={require("../../../assets/floresta.png")} style={styles.cardImage} resizeMode="cover"/>
                         <View style={styles.card}>
                             <View style={styles.cardText}>
-                                <CustomText text="Sudeste" color={colors.darkBlueColor} fontWeight="bold"/>
+                                <CustomText text="Plantio no verão" color={colors.darkBlueColor} fontWeight="bold"/>
                                 <CustomText text="Confira artigos sobre o tema" color={colors.leadGrey}/>
                             </View>
 
@@ -101,7 +101,7 @@ export const Logged: React.FC = () => {
 
             <View style={styles.cardsWrapper}>
                 <View style={styles.cardContainer}>
-                    <Image source={require("../../../assets/temperos.png")} style={styles.cardImage} resizeMode="contain"/>
+                    <Image source={require("../../../assets/safra.png")} style={styles.cardImage} resizeMode="cover"/>
                     <View style={styles.card}>
                         <View style={styles.cardText}>
                             <CustomText text="Nordeste" color={colors.darkBlueColor} fontWeight="bold"/>
@@ -115,7 +115,7 @@ export const Logged: React.FC = () => {
                 </View>
 
                     <View style={styles.cardContainer}>
-                        <Image source={require("../../../assets/cafe-lavoura.png")} style={styles.cardImage} resizeMode="contain"/>
+                        <Image source={require("../../../assets/cafe-lavoura.png")} style={styles.cardImage} resizeMode="cover"/>
                         <View style={styles.card}>
                             <View style={styles.cardText}>
                                 <CustomText text="Sudeste" color={colors.darkBlueColor} fontWeight="bold"/>
@@ -131,7 +131,7 @@ export const Logged: React.FC = () => {
 
             <View style={styles.cardsWrapper}>
                 <View style={styles.cardContainer}>
-                    <Image source={require("../../../assets/sementes-caatinga.png")} style={styles.cardImage} resizeMode="contain"/>
+                    <Image source={require("../../../assets/sementes-caatinga.png")} style={styles.cardImage} resizeMode="cover"/>
                     <View style={styles.card}>
                         <View style={styles.cardText}>
                             <CustomText text="Nordeste" color={colors.darkBlueColor} fontWeight="bold"/>
@@ -145,7 +145,7 @@ export const Logged: React.FC = () => {
                 </View>
 
                     <View style={styles.cardContainer}>
-                        <Image source={require("../../../assets/flores.png")} style={styles.cardImage} resizeMode="contain"/>
+                        <Image source={require("../../../assets/flores.png")} style={styles.cardImage} resizeMode="cover"/>
                         <View style={styles.card}>
                             <View style={styles.cardText}>
                                 <CustomText text="Sudeste" color={colors.darkBlueColor} fontWeight="bold"/>
@@ -253,8 +253,8 @@ const styles = StyleSheet.create({
     },
 
     cardImage: {
-        flex: 1,
         width: "100%",
+        height: 150,
         top: 5
     },
 
