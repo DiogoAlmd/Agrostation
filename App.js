@@ -1,20 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { SignIn } from './components/screens/SignIn/SignIn'
-import { Register } from './components/screens/Register/Register'
+import { NavigationContainer } from '@react-navigation/native';
+import { MyStack } from './components/routes/StackNavigator';
+
 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Register/>
-    </View>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

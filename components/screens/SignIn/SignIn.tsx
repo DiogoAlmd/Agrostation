@@ -1,17 +1,16 @@
 import { View, StyleSheet, Image } from 'react-native';
-import { CustomButton } from '../../CustomButton/CustomButton.js';
 import { CustomInput } from '../../CustomInput/CustomInput';
-import { Title } from "../../Title/Title";
 import { colors } from "../../../assets/colors";
-import { useFonts } from "expo-font"
-
-export const SignIn = (props) => {
-  const [fonts] = useFonts({
-    'Urbanist': require('../../../assets/Urbanist-VariableFont_wght.ttf')
-  })
+import { CustomButton } from '../../CustomButton/CustomButton';
+import { CustomText } from '../../CustomText/CustomText';
+import { StackTypes } from '../../routes/StackNavigator';
+import { useNavigation } from "@react-navigation/native"
 
 
-    return(
+export const SignIn: React.FC = () => {
+    const navigation = useNavigation<StackTypes>()
+
+    return (
         <View style={styles.wrapper}>
           <Image 
           source={require('../../../assets/logo-agrostation.png')} 
@@ -19,50 +18,56 @@ export const SignIn = (props) => {
           resizeMode= 'contain' />
 
           <View style={styles.title}>
-          <Title title="agro"
-                 fontSize={40}
+          <CustomText text="agro"
+                 size={40}
                  color={colors.primaryColor}
-                 fontWeight={700}
-                 fontFamily="Urbanist" />
-          <Title title="station"
-                 fontSize={40}
+                 fontWeight="700"/>
+          <CustomText text="station"
+                 size={40}
                  color={colors.whiteColor}
-                 fontWeight={700} />
+                 fontWeight="700"/>
           </View>
 
           <View style={styles.inputContainer}>
             <CustomInput 
-            placeholder="Usuário" 
-            height={40} 
-            width={200} 
+            placeholder="Email" 
+            height={50} 
+            width={340} 
             borderColor={colors.primaryColor} 
             border={1}
             borderRadius={10} 
-            placeholderColor={colors.whiteColor} 
+            placeholderTextColor={colors.whiteColor} 
             />
 
             <CustomInput 
             placeholder="Senha" 
-            height={40} 
-            width={200} 
+            height={50} 
+            width={340} 
             borderColor={colors.primaryColor} 
             border={1}
             borderRadius={10} 
-            placeholderColor={colors.whiteColor} 
+            placeholderTextColor={colors.whiteColor} 
             />
           </View>
 
           <View style={styles.buttonContainer}>
             <CustomButton title="Entrar" 
-                          bgColor={colors.primaryColor}
-                          color={colors.whiteColor}/>
+                          backgroundColor={colors.primaryColor}
+                          color={colors.whiteColor}
+                          width={320}
+                          height={50}
+                          borderRadius={30}/>
 
             <CustomButton title="Criar conta" 
-                          bgColor={colors.secondaryColor} 
-                          border={1}
+                          backgroundColor={colors.secondaryColor} 
                           color={colors.whiteColor}
-                          borderColor={colors.primaryColor} /> 
+                          borderColor={colors.primaryColor}
+                          width={320}
+                          height={50}
+                          onPress={() => navigation.navigate("Register")} /> 
           </View>
+          <Image source={require('../../../assets/Circulos.png')}
+                 style={styles.circles}/>
         </View>
     );
 }
@@ -72,30 +77,32 @@ export const SignIn = (props) => {
 
   const styles = StyleSheet.create({
     wrapper: {
-      height: "100%",
       width: "100%",
       backgroundColor: colors.secondaryColor,
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      gap: 20
+      padding: 20
     },
 
     image: {
       width: 200,
       height: 200,
-      marginTop: 90
+      marginTop: 75
+    },
+
+    circles: {
+      top: 20
     },
     
     inputContainer: {
-      gap: 12,
-      flex: 1
+      marginBottom: 20,
+      width: "100%",
+      gap: 20
     },
 
     buttonContainer: {
-      gap: 12,
-      flex: 4,
-      marginTop: 50
+      width: "100%"
     },
 
     title: {
