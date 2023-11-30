@@ -20,7 +20,7 @@ export const SignIn: React.FC = () => {
                   .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
-                    // navigation.navigate("Tab")
+                    navigation.navigate("Tab")
                     // ...
                   })
                   .catch((error) => {
@@ -58,7 +58,8 @@ export const SignIn: React.FC = () => {
             borderColor={colors.primaryColor} 
             border={1}
             borderRadius={10} 
-            placeholderTextColor={colors.whiteColor} 
+            placeholderTextColor={colors.whiteColor}
+            color={colors.whiteColor} 
             />
 
             <CustomInput 
@@ -69,7 +70,8 @@ export const SignIn: React.FC = () => {
             borderColor={colors.primaryColor} 
             border={1}
             borderRadius={10} 
-            placeholderTextColor={colors.whiteColor} 
+            placeholderTextColor={colors.whiteColor}
+            color={colors.whiteColor} 
             />
           </View>
 
@@ -88,7 +90,7 @@ export const SignIn: React.FC = () => {
                           borderColor={colors.primaryColor}
                           width={320}
                           height={50}
-                          onPress={() => navigation.navigate("Register")} /> 
+                          onPress={login} /> 
           </View>
           <Image source={require('../../../assets/Circulos.png')}
                  style={styles.circles}/>

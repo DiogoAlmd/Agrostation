@@ -4,6 +4,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { Logged } from "../screens/Logged/Logged";
 import { SignIn } from "../screens/SignIn/SignIn";
 import { Register } from "../screens/Register/Register";
+import { Reports } from "../screens/Reports/Reports";
+import CreateReports from "../screens/createReports/CreateReports";
 
 
  type TabParams = {
@@ -30,13 +32,28 @@ const Tab = createBottomTabNavigator();
                    tabBarStyle: {
                     backgroundColor: "#d44a4a"
                    },
-                
+                   
                    tabBarLabelStyle: {
-                    fontSize: 12,
-                    color: "#161416"},
-                }}
+                       fontSize: 12,
+                       color: "#161416"},
+                    }}
                 />
-            <Tab.Screen name="Gerar Relatórios" component={SignIn} options={{
+                    <Tab.Screen name="Relatórios" component={Reports} options={{
+                        headerShown: false,
+                        tabBarIcon: () => (
+                            <MaterialCommunityIcons name="account" size={30} />
+                           ),
+                        
+                           tabBarStyle: {
+                            backgroundColor: "#d44a4a"
+                           },
+                        
+                           tabBarLabelStyle: {
+                            fontSize: 12,
+                            color: "#161416"},
+                    }}
+                    />
+                <Tab.Screen name="Gerar Relatórios" component={CreateReports} options={{
                     headerShown: false,
                     tabBarIcon: () => (
                         <MaterialCommunityIcons name="pencil" size={30} />
@@ -49,21 +66,6 @@ const Tab = createBottomTabNavigator();
                        tabBarLabelStyle: {
                         fontSize: 12,
                         color: "#161416"},
-            }}
-            />
-            <Tab.Screen name="Relatórios" component={Register} options={{
-                headerShown: false,
-                tabBarIcon: () => (
-                    <MaterialCommunityIcons name="account" size={30} />
-                   ),
-                
-                   tabBarStyle: {
-                    backgroundColor: "#d44a4a"
-                   },
-                
-                   tabBarLabelStyle: {
-                    fontSize: 12,
-                    color: "#161416"},
             }}
             />
         </Tab.Navigator>

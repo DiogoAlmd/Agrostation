@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { View, StyleSheet, Image, ScrollView } from "react-native"
 import { CustomText } from "../../CustomText/CustomText"
 import { colors } from "../../../assets/colors"
 import { CustomButton } from "../../CustomButton/CustomButton"
+import { StackTypes } from '../../routes/StackNavigator';
+import { useNavigation } from "@react-navigation/native"
 
 export const Logged: React.FC = () => {
+    
+    const navigation = useNavigation<StackTypes>();
+
     return (
         <ScrollView style={styles.wrapper} contentContainerStyle={styles.scrollContainer}>
             <View style={styles.topView}>
@@ -27,7 +32,7 @@ export const Logged: React.FC = () => {
                     </View>
 
                     <View style={styles.calculatorButton}>
-                        <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
+                        <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => setTimeout(() => {navigation.navigate("CreateReports")}, 3000)} />
                     </View>
                 </View>
             </View>
@@ -47,7 +52,7 @@ export const Logged: React.FC = () => {
                         </View>
 
                         <View style={styles.cardButton}>
-                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
+                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => navigation.navigate("Cafe")} />
                         </View>
                     </View>
                 </View>
@@ -61,7 +66,7 @@ export const Logged: React.FC = () => {
                             </View>
 
                             <View style={styles.cardButton}>
-                                <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
+                                <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => navigation.navigate("Sudeste")} />
                             </View>
                         </View>
                     </View>
@@ -78,7 +83,7 @@ export const Logged: React.FC = () => {
                         </View>
 
                         <View style={styles.cardButton}>
-                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
+                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => navigation.navigate("Safras")}/>
                         </View>
                     </View>
                 </View>
@@ -92,44 +97,13 @@ export const Logged: React.FC = () => {
                             </View>
 
                             <View style={styles.cardButton}>
-                                <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
-                            </View>
-                        </View>
-                    </View>
-            </View>
-            
-
-            <View style={styles.cardsWrapper}>
-                <View style={styles.cardContainer}>
-                    <Image source={require("../../../assets/safra.png")} style={styles.cardImage} resizeMode="cover"/>
-                    <View style={styles.card}>
-                        <View style={styles.cardText}>
-                            <CustomText text="Nordeste" color={colors.darkBlueColor} fontWeight="bold"/>
-                            <CustomText text="Confira artigos sobre o tema" color={colors.leadGrey}/>
-                        </View>
-
-                        <View style={styles.cardButton}>
-                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
-                        </View>
-                    </View>
-                </View>
-
-                    <View style={styles.cardContainer}>
-                        <Image source={require("../../../assets/cafe-lavoura.png")} style={styles.cardImage} resizeMode="cover"/>
-                        <View style={styles.card}>
-                            <View style={styles.cardText}>
-                                <CustomText text="Sudeste" color={colors.darkBlueColor} fontWeight="bold"/>
-                                <CustomText text="Confira artigos sobre o tema" color={colors.leadGrey}/>
-                            </View>
-
-                            <View style={styles.cardButton}>
-                                <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
+                                <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => navigation.navigate("Verao")} />
                             </View>
                         </View>
                     </View>
             </View>
 
-            <View style={styles.cardsWrapper}>
+            <View style={styles.lastCard}>
                 <View style={styles.cardContainer}>
                     <Image source={require("../../../assets/sementes-caatinga.png")} style={styles.cardImage} resizeMode="cover"/>
                     <View style={styles.card}>
@@ -139,29 +113,18 @@ export const Logged: React.FC = () => {
                         </View>
 
                         <View style={styles.cardButton}>
-                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
+                            <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => navigation.navigate("Caatinga")} />
                         </View>
                     </View>
                 </View>
-
-                    <View style={styles.cardContainer}>
-                        <Image source={require("../../../assets/flores.png")} style={styles.cardImage} resizeMode="cover"/>
-                        <View style={styles.card}>
-                            <View style={styles.cardText}>
-                                <CustomText text="Sudeste" color={colors.darkBlueColor} fontWeight="bold"/>
-                                <CustomText text="Confira artigos sobre o tema" color={colors.leadGrey}/>
-                            </View>
-
-                            <View style={styles.cardButton}>
-                                <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} />
-                            </View>
-                        </View>
-                    </View>
             </View>
            </View>
         </ScrollView>
     )
+    
 }
+
+
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -271,5 +234,11 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         marginTop: 10,
         marginLeft: 15
+    },
+
+    lastCard: {
+        flexDirection: "row",
+        gap: 10,
+        marginLeft: 90
     },
 })

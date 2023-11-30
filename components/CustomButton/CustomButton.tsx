@@ -18,6 +18,7 @@ interface Props {
     bottom?: number;
     onPress?: (event: GestureResponderEvent) => void,
     size?: number;
+    disabled?: boolean;
 }
 
     
@@ -35,7 +36,8 @@ export const CustomButton: React.FC<Props> = ({
     paddingV,
     bottom,
     onPress,
-    size
+    size,
+    disabled
 }) => {
   
 const styles = StyleSheet.create({
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
 })
 
     return (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
+        <TouchableOpacity style={styles.button} onPress={onPress} disabled={disabled}>
             <Text style={styles.buttonText}>
                 {title}
             </Text>

@@ -16,6 +16,8 @@ interface Color {
     beigeColor: string;
 
     leadGrey: string;
+
+    lighterBlackColor: string;
 };
 
 
@@ -37,5 +39,7 @@ export const colors: Color = {
 
     beigeColor: "#FFF4CF",
 
-    leadGrey: "#474747"
+    leadGrey: "#474747",
+
+    lighterBlackColor: "#404040"
 };
