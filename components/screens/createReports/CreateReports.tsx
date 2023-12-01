@@ -18,8 +18,6 @@ export default function CreateReports() {
     }, [])
 
   const handleNome = async () => {
-      // Adicionando a navegação após a criação do relatório
-      console.log(nome)
       navigation.navigate("StepScreen", { nome: nome});
   };
 

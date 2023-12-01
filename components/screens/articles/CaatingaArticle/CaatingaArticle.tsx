@@ -44,7 +44,7 @@ export const CaatingaArticle: React.FC = () => {
                     <View>
                                 <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Verao")}>
                                     <Image source={require("../../../../assets/Melancia.png")} style={styles.clickableCardImage} resizeMode="contain" />
-                                    <View style={styles.clickableCard}>(
+                                    <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>
                                             <CustomText text="Clima" size={12} />
                                             <CustomText text="Plantio no verão" color={colors.darkBlueColor} fontWeight="bold" />

@@ -35,7 +35,6 @@ export const Register: React.FC = () => {
         userID
       });
       navigation.navigate("Tab")
-      console.log("Usuário cadastrado com sucesso:", user);
     } catch (error) {
       console.error("Erro ao cadastrar usuário:", error);
     }

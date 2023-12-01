@@ -50,6 +50,7 @@ export const CoffeeArticle: React.FC = () => {
                                         </View>
                                     </View>
                                 </TouchableOpacity>
+
                             </View>
 
                             <View>

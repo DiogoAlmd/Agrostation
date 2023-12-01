@@ -90,7 +90,7 @@ export const SignIn: React.FC = () => {
                           borderColor={colors.primaryColor}
                           width={320}
                           height={50}
-                          onPress={login} /> 
+                          onPress={() => navigation.navigate("Register")} /> 
           </View>
           <Image source={require('../../../assets/Circulos.png')}
                  style={styles.circles}/>

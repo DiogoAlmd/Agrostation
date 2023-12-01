@@ -44,8 +44,6 @@ export const Reports: React.FC = () => {
     if (userUid) {
       checkDocument();
     }
-
-    console.log(userUid);
   }, [userUid]);
 
   const checkDocument = async () => {
@@ -58,7 +56,6 @@ export const Reports: React.FC = () => {
           const data = doc.data();
           return { id, ...data };
         });
-        console.log(reports);
 
         setReportsWithId(reports);
         setDocumentFound("Existe");

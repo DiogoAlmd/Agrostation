@@ -57,9 +57,6 @@ export default function StepScreen() {
               setUserUid(user.uid);
             }
           });
-      
-          //console.log("userid " + userUid);
-          // Cleanup function
           return () => unsubscribe();
       }, []);
 
@@ -111,8 +108,7 @@ export default function StepScreen() {
             vGastoMaoObra,
             vGastoItens,
             userUid
-          });
-          console.log("gerou");    
+          });    
         } catch (error) {
           console.error("Erro ao gerar relatorio:", error);
         }
@@ -253,7 +249,6 @@ export default function StepScreen() {
                 <ScrollView contentContainerStyle={styles.scrollViewContent} keyboardShouldPersistTaps="handled">
                     <View style={styles.container}>
                         <CustomText text="Relatório de Custos" fontWeight="bold" size={16} />
-                        <CustomText text="Plantação de Arroz Arbóreo" fontWeight="bold" size={18} />
                         <CustomText text={`Total: ${valorTotal}`} />
                         <CustomText text={`Área de: ${tamanhoDaArea} m²`} />
                     </View>

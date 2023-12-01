@@ -71,7 +71,6 @@ export const ReportsPerfomance: React.FC = () => {
     <ScrollView contentContainerStyle={styles.scrollViewContent} keyboardShouldPersistTaps="handled">
     <View style={styles.container}>
         <CustomText text="Relatório de Custos" fontWeight="bold" size={16} />
-        <CustomText text="Plantação de Arroz Arbóreo" fontWeight="bold" size={18} />
         <CustomText text={`Área de: ${tamanhoDaArea} m²`} />
     </View>
 
