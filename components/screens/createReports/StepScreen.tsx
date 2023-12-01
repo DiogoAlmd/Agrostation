@@ -6,10 +6,15 @@ import { colors } from "../../../assets/colors";
 import { CustomText } from "../../CustomText/CustomText";
 import Select from "../Select/Select";
 import { StackTypes } from '../../routes/StackNavigator';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { db } from "../../../src/config/firebase";
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+
+
+type Params = {
+    nome: string;
+}
 
 
 export default function StepScreen() {
@@ -25,6 +30,10 @@ export default function StepScreen() {
     const [vGastoMQuadrado, setValorGastoMQuadrado] = useState<number>(0);
     const [valorTotal, setValorTotal] = useState<number>(0);
     const [done, setDone] = useState<boolean>(false)
+
+    const route = useRoute<RouteProp<Record<string, Params>, string>>();
+
+    const { nome } = route.params;
 
     const navigation = useNavigation<StackTypes>();
     const auth = getAuth();
@@ -49,7 +58,7 @@ export default function StepScreen() {
             }
           });
       
-          console.log("userid " + userUid);
+          //console.log("userid " + userUid);
           // Cleanup function
           return () => unsubscribe();
       }, []);
@@ -94,6 +103,7 @@ export default function StepScreen() {
     const geraRelatorio = async () => {
         try { 
           await addDoc(collection(db, "Reports"), {
+            nome,
             tamanhoDaArea,
             selectedValue,
             vGastoMQuadrado,
@@ -104,11 +114,7 @@ export default function StepScreen() {
             vGastoItens,
             userUid
           });
-          console.log("gerou");
-    
-          // Adicionando a navegação após a criação do relatório
-          navigation.navigate("StepScreen");
-    
+          console.log("gerou");    
         } catch (error) {
           console.error("Erro ao gerar relatorio:", error);
         }
@@ -120,15 +126,17 @@ export default function StepScreen() {
     return (
         <View style={styles.wrapper}>
             {!done && (
+                <>
             <View style={styles.stepContainer}>
                 <CustomText text={`Etapa ${etapa} de 7:`} fontWeight="bold" size={20}/>
                 <CustomText text={` ${categoria[etapa-1]}`} size={20} />
             </View>
-            )}
             
             <View style={styles.insertContainer}>
                 <CustomText text="Insira os dados necessários nos campos abaixo" />
             </View>
+            </>
+            )}
 
 
             <View style={styles.inputContainer}>
@@ -249,7 +257,7 @@ export default function StepScreen() {
                         <CustomText text="Relatório de Custos" fontWeight="bold" size={16} />
                         <CustomText text="Plantação de Arroz Arbóreo" fontWeight="bold" size={18} />
                         <CustomText text={`Total: ${valorTotal}`} />
-                        <CustomText text={`Área de: ${tamanhoDaArea} ${console.log(done)} m²`} />
+                        <CustomText text={`Área de: ${tamanhoDaArea} m²`} />
                     </View>
 
 
@@ -298,7 +306,7 @@ export default function StepScreen() {
                     </View>
 
                     <View style={[styles.buttonContainer, {height: "15%"}]}>
-                        <CustomButton title="Ir para relatórios" width={315} height={50} size={16} color={colors.whiteColor} backgroundColor={colors.primaryColor } onPress={() => navigation.navigate("Reports")} />
+                        <CustomButton title="Ir para relatórios" width={315} height={50} size={16} color={colors.whiteColor} backgroundColor={colors.primaryColor } borderRadius={20} onPress={() => navigation.navigate("Reports")} />
                     </View>
                 </ScrollView>
                 }
@@ -395,7 +403,7 @@ const styles = StyleSheet.create({
       },
 
       container: {
-        gap: 8,
+        marginTop: 60,
         justifyContent: "center",
         alignItems: "center"
       }

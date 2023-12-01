@@ -24,7 +24,7 @@ type StackParams = {
   Logged: undefined;
   Tab: undefined;
   CreateReports: undefined;
-  StepScreen: undefined;
+  StepScreen: { nome: string };
   Cafe: undefined;
   Caatinga: undefined;
   Verao: undefined;

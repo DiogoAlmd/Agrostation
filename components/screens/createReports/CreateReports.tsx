@@ -6,45 +6,21 @@ import { colors } from "../../../assets/colors";
 import { CustomText } from "../../CustomText/CustomText";
 import { StackTypes } from '../../routes/StackNavigator';
 import { useNavigation } from "@react-navigation/native";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { db } from "../../../src/config/firebase";
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
 
 export default function CreateReports() {
     const [nome, setNome] = useState<string>("");
-    const [userUid, setUserUid] = useState("");
 
     const navigation = useNavigation<StackTypes>();
 
-    const auth = getAuth();
+    useEffect(() => {
+      setNome("");
+    }, [])
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserUid(user.uid);
-      }
-    });
-
-    console.log("userid " + userUid);
-    // Cleanup function
-    return () => unsubscribe();
-  }, []);
-
-  const geraRelatorio = async () => {
-    try { 
-      await addDoc(collection(db, "Reports"), {
-        nome,
-        userUid
-      });
-      console.log(userUid);
-
+  const handleNome = async () => {
       // Adicionando a navegação após a criação do relatório
-      navigation.navigate("StepScreen");
-
-    } catch (error) {
-      console.error("Erro ao gerar relatorio:", error);
-    }
+      console.log(nome)
+      navigation.navigate("StepScreen", { nome: nome});
   };
 
     return (
@@ -65,7 +41,7 @@ export default function CreateReports() {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <CustomButton title="Próxima etapa" width={315} height={50} size={16} color={colors.whiteColor} backgroundColor={nome == "" ? colors.greyColor : colors.primaryColor} paddingV={13} paddingH={20} borderRadius={20} disabled={nome == "" ? true : false} onPress={geraRelatorio} />
+                    <CustomButton title="Próxima etapa" width={315} height={50} size={16} color={colors.whiteColor} backgroundColor={nome == "" ? colors.greyColor : colors.primaryColor} paddingV={13} paddingH={20} borderRadius={20} disabled={nome == "" ? true : false} onPress={handleNome} />
                 </View>
             </View>
         </View>

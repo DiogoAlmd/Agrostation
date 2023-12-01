@@ -62,7 +62,6 @@ export const Reports: React.FC = () => {
 
   return (
     <View style={styles.wrapper}>
-      <View style={styles.content}>
         <View style={styles.titleContainer}>
           <CustomText text="Relatórios" fontWeight="bold" color={colors.primaryColor} size={34} />
         </View>
@@ -84,7 +83,6 @@ export const Reports: React.FC = () => {
             <CustomText text="Você ainda não gerou nenhum relatório de desempenho individual" size={17} color={colors.primaryColor} />
           </View>
         )}
-      </View>
     </View>
   );
 };
@@ -93,14 +91,8 @@ const styles = StyleSheet.create({
     wrapper: {
         backgroundColor: colors.whiteColor,
         flex: 1,
-        justifyContent: "center"
-    },
-
-    content: {
-        flex: 1,
-        alignItems: "center",
         justifyContent: "center",
-        gap: 5
+        alignItems: "center"
     },
 
     image: {
