@@ -1,15 +1,19 @@
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { CustomInput } from "../../CustomInput/CustomInput";
 import { CustomButton } from "../../CustomButton/CustomButton";
 import { colors } from "../../../assets/colors";
-import { useState, useEffect } from "react";
 import { CustomText } from "../../CustomText/CustomText";
 import Select from "../Select/Select";
 import { StackTypes } from '../../routes/StackNavigator';
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { db } from "../../../src/config/firebase";
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
 
 export default function StepScreen() {
+    const [userUid, setUserUid] = useState("");
     const [etapa, setEtapa] = useState<number>(1);
     const [selectedValue, setSeletectedValue] = useState<string>("");
     const [tamanhoDaArea, setTamanhoDaArea] = useState<number>(0);
@@ -23,6 +27,7 @@ export default function StepScreen() {
     const [done, setDone] = useState<boolean>(false)
 
     const navigation = useNavigation<StackTypes>();
+    const auth = getAuth();
 
     const [isShown, setIsShown] = useState<boolean>(false)
     
@@ -37,6 +42,16 @@ export default function StepScreen() {
         setVGastoMaoObra(0),
         setValorGastoMQuadrado(0)
         setDone(false)
+
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+              setUserUid(user.uid);
+            }
+          });
+      
+          console.log("userid " + userUid);
+          // Cleanup function
+          return () => unsubscribe();
       }, []);
 
       useEffect(() => {
@@ -73,7 +88,31 @@ export default function StepScreen() {
     const gerarRelatorio = () => {
         setEtapa(etapa + 1)
         setDone(true)
+        geraRelatorio();
     }
+
+    const geraRelatorio = async () => {
+        try { 
+          await addDoc(collection(db, "Reports"), {
+            tamanhoDaArea,
+            selectedValue,
+            vGastoMQuadrado,
+            vGastoCorrecaoSolo,
+            vGastoFertilizante,
+            vGastoHerbicidas,
+            vGastoMaoObra,
+            vGastoItens,
+            userUid
+          });
+          console.log("gerou");
+    
+          // Adicionando a navegação após a criação do relatório
+          navigation.navigate("StepScreen");
+    
+        } catch (error) {
+          console.error("Erro ao gerar relatorio:", error);
+        }
+      };
 
     const categoria = ["Área", "Cultura", "Correção de solo", "Fertilizantes", "Herbicidas", "Terceirização", "Itens diversos"]
     const cultura = ["Grãos", "Hortaliças", "Frutas", "Floricultura"]
