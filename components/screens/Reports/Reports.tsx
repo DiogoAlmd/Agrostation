@@ -6,6 +6,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../../src/config/firebase";
 import { useNavigation } from "@react-navigation/core";
 import { StackTypes } from '../../routes/StackNavigator';
+import { colors } from "../../../assets/colors";
 
 export const Reports: React.FC = () => {
   const [userUid, setUserUid] = useState("");
@@ -63,15 +64,15 @@ export const Reports: React.FC = () => {
     <View style={styles.wrapper}>
       <View style={styles.content}>
         <View style={styles.titleContainer}>
-          <CustomText text="Relatórios" fontWeight="bold" color="#FFFFFF" size={34} />
+          <CustomText text="Relatórios" fontWeight="bold" color={colors.primaryColor} size={34} />
         </View>
         {documentFound === "Existe" ? (
           <View style={styles.reportsContainer}>
-            <CustomText text="Nomes" color="#FFFFFF" size={24} fontWeight="bold" />
+            <CustomText text="Nomes" color={colors.primaryColor} size={24} fontWeight="bold" />
             <View style={styles.studentsContainer}>
                 {reportsWithId.map((report) => (
                 <TouchableOpacity key={report.id}>
-                  <CustomText key={report.id} text={report.nome} color="#FFFFFF" size={17} fontWeight="bold" backgroundColor="#7B4296" padding={15}/>
+                  <CustomText key={report.id} text={report.nome} color="#FFFFFF" size={17} fontWeight="bold" backgroundColor={colors.primaryColor} padding={15}/>
                 </TouchableOpacity>
                 ))}
             </View>
@@ -80,7 +81,7 @@ export const Reports: React.FC = () => {
         ) : (
           <View style={styles.NoReportsContainer}>
             <CustomText text="Nenhum relatório" color="#FFFFFF" size={34} fontWeight="bold" />
-            <CustomText text="Você ainda não gerou nenhum relatório de desempenho individual" size={17} color="#9A99A2" />
+            <CustomText text="Você ainda não gerou nenhum relatório de desempenho individual" size={17} color={colors.primaryColor} />
           </View>
         )}
       </View>
@@ -90,7 +91,7 @@ export const Reports: React.FC = () => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        backgroundColor: "#000000",
+        backgroundColor: colors.whiteColor,
         flex: 1,
         justifyContent: "center"
     },
@@ -122,19 +123,11 @@ const styles = StyleSheet.create({
     titleContainer: {
         alignSelf: "flex-start",
         paddingLeft: 10,
-        bottom: 150
+        bottom: 120
     },
 
     NoReportsContainer: {
       alignItems: "center"
-    },
-
-    roundedLine: {
-      height: 0.5,
-      width: "100%",
-      backgroundColor: "#77767E",
-      borderTopLeftRadius: 5,
-      borderTopRightRadius: 5
     },
 
     studentsContainer: {

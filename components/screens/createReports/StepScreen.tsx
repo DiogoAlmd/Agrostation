@@ -259,7 +259,7 @@ export default function StepScreen() {
                     </View>
 
                     <View style={[styles.buttonContainer, {height: "15%"}]}>
-                        <CustomButton title="Ir para relatórios" width={315} height={50} size={16} color={colors.whiteColor} backgroundColor={colors.primaryColor } onPress={() => navigation.navigate("Logged")} />
+                        <CustomButton title="Ir para relatórios" width={315} height={50} size={16} color={colors.whiteColor} backgroundColor={colors.primaryColor } onPress={() => navigation.navigate("Reports")} />
                     </View>
                 </ScrollView>
                 }
@@ -304,6 +304,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         justifyContent: "center",
+        alignItems: "center"
     },
 
     card: {

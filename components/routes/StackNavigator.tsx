@@ -13,6 +13,7 @@ import { CaatingaArticle } from "../screens/articles/CaatingaArticle/CaatingaArt
 import { SummerArticle } from "../screens/articles/SummerArticle/SummerArticle";
 import { SafrasArticle } from "../screens/articles/SafraArticle/SafraArticle";
 import { SudesteArticle } from "../screens/articles/SudesteArticle/SudesteArticle";
+import { Reports } from "../screens/Reports/Reports";
 
 
 type StackParams = {
@@ -29,7 +30,7 @@ type StackParams = {
   Verao: undefined;
   Safras: undefined;
   Sudeste: undefined;
-  Cards: undefined;
+  Reports: undefined;
 }
 
 export type StackTypes =  StackNavigationProp<StackParams>;
@@ -51,6 +52,7 @@ export const MyStack: React.FC = () => {
       <Stack.Screen name="Sudeste" component={SudesteArticle} options={{ headerShown: false }}/>
       <Stack.Screen name="CreateReports" component={CreateReports} options={{ headerShown: false }}/>
       <Stack.Screen name="StepScreen" component={StepScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="Reports" component={Reports} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 };

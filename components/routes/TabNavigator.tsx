@@ -28,10 +28,6 @@ const Tab = createBottomTabNavigator();
                 tabBarIcon: () => (
                     <MaterialCommunityIcons name="file-chart" size={30} />
                    ),
-                
-                   tabBarStyle: {
-                    backgroundColor: "#d44a4a"
-                   },
                    
                    tabBarLabelStyle: {
                        fontSize: 12,
@@ -44,10 +40,6 @@ const Tab = createBottomTabNavigator();
                             <MaterialCommunityIcons name="account" size={30} />
                            ),
                         
-                           tabBarStyle: {
-                            backgroundColor: "#d44a4a"
-                           },
-                        
                            tabBarLabelStyle: {
                             fontSize: 12,
                             color: "#161416"},
@@ -58,10 +50,6 @@ const Tab = createBottomTabNavigator();
                     tabBarIcon: () => (
                         <MaterialCommunityIcons name="pencil" size={30} />
                        ),
-                    
-                       tabBarStyle: {
-                        backgroundColor: "#d44a4a"
-                       },
                     
                        tabBarLabelStyle: {
                         fontSize: 12,
