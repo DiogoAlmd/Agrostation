@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from "react-native"
+import { Text, StyleSheet, GestureResponderEvent } from "react-native"
 
 
 interface Props {
@@ -6,6 +6,7 @@ interface Props {
     fontWeight?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"
     color?: string;
     width?: number;
+    height?: number;
     borderColor?: string;
     border?: number;
     padding?: number;
@@ -14,6 +15,7 @@ interface Props {
     backgroundColor?: string;
     text: string;
     lineHeight?: number;
+    onPress?: (event: GestureResponderEvent) => void,
 }
 
 export const CustomText: React.FC<Props> = ({
@@ -21,16 +23,19 @@ export const CustomText: React.FC<Props> = ({
     fontWeight,
     color,
     width,
+    height,
     text,
     border,
     marginTop,
     backgroundColor,
     padding,
     borderRadius,
-    lineHeight
+    lineHeight,
+    onPress
 }) =>{
     const styles = StyleSheet.create({
         text: {
+            height: height,
             fontSize: size,
             fontWeight: fontWeight,
             color: color,
@@ -45,7 +50,7 @@ export const CustomText: React.FC<Props> = ({
     })
 
     return (
-        <Text style={styles.text}>
+        <Text style={styles.text} onPress={onPress}>
             {text}
         </Text>
     )

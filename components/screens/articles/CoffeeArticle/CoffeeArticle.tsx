@@ -2,9 +2,11 @@ import { View, Image, StyleSheet, Dimensions, TouchableOpacity } from "react-nat
 import { ScrollView, GestureHandlerRootView } from "react-native-gesture-handler"
 import { CustomText } from "../../../CustomText/CustomText"
 import { colors } from "../../../../assets/colors"
-import { CustomButton } from "../../../CustomButton/CustomButton"
+import { StackTypes } from '../../../routes/StackNavigator';
+import { useNavigation } from "@react-navigation/native";
 
 export const CoffeeArticle: React.FC = () => {
+    const navigation = useNavigation<StackTypes>();
 
     return (
         <GestureHandlerRootView style={styles.wrapper}>
@@ -38,7 +40,7 @@ export const CoffeeArticle: React.FC = () => {
                         </View>
                     </View>
                             <View>
-                                <TouchableOpacity style={styles.clickableCardContainer}>
+                                <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Caatinga") }>
                                     <Image source={require("../../../../assets/Caatinga.png")} style={styles.clickableCardImage} resizeMode="contain" />
                                     <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>
@@ -51,7 +53,7 @@ export const CoffeeArticle: React.FC = () => {
                             </View>
 
                             <View>
-                                <TouchableOpacity style={styles.clickableCardContainer}>
+                                <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Verao")}>
                                     <Image source={require("../../../../assets/Melancia.png")} style={styles.clickableCardImage} resizeMode="contain" />
                                     <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>
@@ -64,7 +66,7 @@ export const CoffeeArticle: React.FC = () => {
                             </View>
 
                             <View style={styles.clickableCardWrapper}>
-                                <TouchableOpacity style={styles.clickableCardContainer}>
+                                <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Safras")}>
                                     <Image source={require("../../../../assets/safra-em-alta.png")} style={styles.clickableCardImage} resizeMode="contain" />
                                     <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>

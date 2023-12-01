@@ -14,6 +14,7 @@ import { SummerArticle } from "../screens/articles/SummerArticle/SummerArticle";
 import { SafrasArticle } from "../screens/articles/SafraArticle/SafraArticle";
 import { SudesteArticle } from "../screens/articles/SudesteArticle/SudesteArticle";
 import { Reports } from "../screens/Reports/Reports";
+import { ReportsPerfomance } from "../screens/ReportsPerformance/ReportsPerformance";
 
 
 type StackParams = {
@@ -31,6 +32,7 @@ type StackParams = {
   Safras: undefined;
   Sudeste: undefined;
   Reports: undefined;
+  ReportsPerformance: { nome: string, tamanhoDaArea: number, tipoCultura: string, vGastoCorrecaoSolo: number, vGastoFertilizante: number, vGastoHerbicidas: number,  vGastoMQuadrado: number, vGastoMaoObra: number, vGastoItens: number };
 }
 
 export type StackTypes =  StackNavigationProp<StackParams>;
@@ -43,7 +45,6 @@ export const MyStack: React.FC = () => {
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
       <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
-      <Stack.Screen name="Tab" component={MyTab} options={{ headerShown: false}}/>
       <Stack.Screen name="CreatedAccount" component={CreatedAccount} options={{ headerShown: false }}/>
       <Stack.Screen name="Cafe" component={CoffeeArticle} options={{ headerShown: false }}/>
       <Stack.Screen name="Caatinga" component={CaatingaArticle} options={{ headerShown: false }}/>
@@ -52,7 +53,9 @@ export const MyStack: React.FC = () => {
       <Stack.Screen name="Sudeste" component={SudesteArticle} options={{ headerShown: false }}/>
       <Stack.Screen name="CreateReports" component={CreateReports} options={{ headerShown: false }}/>
       <Stack.Screen name="StepScreen" component={StepScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="Tab" component={MyTab} options={{ headerShown: false}}/>
       <Stack.Screen name="Reports" component={Reports} options={{ headerShown: false }}/>
+      <Stack.Screen name="ReportsPerformance" component={ReportsPerfomance} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 };

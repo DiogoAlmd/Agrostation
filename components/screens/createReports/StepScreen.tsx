@@ -66,7 +66,6 @@ export default function StepScreen() {
       useEffect(() => {
         // Soma dos valores em cada etapa
         const total =
-          tamanhoDaArea +
           vGastoCorrecaoSolo +
           vGastoMQuadrado +
           vGastoFertilizante +
@@ -76,7 +75,6 @@ export default function StepScreen() {
 
           setValorTotal(total);
       }, [
-        tamanhoDaArea,
         vGastoCorrecaoSolo,
         vGastoMQuadrado,
         vGastoFertilizante,

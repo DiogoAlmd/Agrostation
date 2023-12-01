@@ -8,6 +8,20 @@ import { useNavigation } from "@react-navigation/core";
 import { StackTypes } from '../../routes/StackNavigator';
 import { colors } from "../../../assets/colors";
 
+interface Report {
+  id: string;
+  nome: string;
+  tamanhoDaArea: number;
+  tipoCultura: string;
+  vGastoCorrecaoSolo: number;
+  vGastoFertilizante: number;
+  vGastoGasolina: number;
+  vGastoHerbicidas: number; 
+  vGastoMQuadrado: number,
+  vGastoMaoObra: number,
+  vGastoItens: number
+}
+
 export const Reports: React.FC = () => {
   const [userUid, setUserUid] = useState("");
   const [documentFound, setDocumentFound] = useState<string | null>(null);
@@ -63,15 +77,15 @@ export const Reports: React.FC = () => {
   return (
     <View style={styles.wrapper}>
         <View style={styles.titleContainer}>
-          <CustomText text="Relatórios" fontWeight="bold" color={colors.primaryColor} size={34} />
+          <CustomText text="Relatórios" fontWeight="bold" color={colors.blackColor} size={24} />
         </View>
         {documentFound === "Existe" ? (
           <View style={styles.reportsContainer}>
-            <CustomText text="Nomes" color={colors.primaryColor} size={24} fontWeight="bold" />
+            <CustomText text="Nomes" color={colors.blackColor} size={20} fontWeight="bold" />
             <View style={styles.studentsContainer}>
                 {reportsWithId.map((report) => (
                 <TouchableOpacity key={report.id}>
-                  <CustomText key={report.id} text={report.nome} color="#FFFFFF" size={17} fontWeight="bold" backgroundColor={colors.primaryColor} padding={15}/>
+                  <CustomText key={report.id} text={report.nome} borderRadius={8} color="#FFFFFF" size={17} fontWeight="bold" backgroundColor={colors.primaryColor} padding={15} onPress={() => navigation.navigate("ReportsPerformance", report)}/>
                 </TouchableOpacity>
                 ))}
             </View>
@@ -89,33 +103,18 @@ export const Reports: React.FC = () => {
 
 const styles = StyleSheet.create({
     wrapper: {
+        width: "100%",
+        height: "100%",
         backgroundColor: colors.whiteColor,
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
     },
 
-    image: {
-        width: 400,
-        height: 100
-    },
-
-    button: {
-        width: 300,
-        alignSelf: "center",
-        borderRadius: 8
-    },
-    
-    buttonContainer: {
-        alignSelf: "center",
-        position: "absolute",
-        bottom: 150
-    },
-
     titleContainer: {
         alignSelf: "flex-start",
         paddingLeft: 10,
-        bottom: 120
+        paddingBottom: 10
     },
 
     NoReportsContainer: {
@@ -126,13 +125,14 @@ const styles = StyleSheet.create({
       marginTop: 10,
       width: 340,
       borderRadius: 8,
-      paddingTop: 8,
-      paddingBottom: 8,
-      paddingLeft: 15,
       gap: 20
     },
 
+    button: {
+      width: 340,
+      height: 170
+    },
+
     reportsContainer: {
-      bottom: 120
     }
 })

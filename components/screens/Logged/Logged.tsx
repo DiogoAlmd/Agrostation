@@ -32,7 +32,7 @@ export const Logged: React.FC = () => {
                     </View>
 
                     <View style={styles.calculatorButton}>
-                        <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => setTimeout(() => {navigation.navigate("CreateReports")}, 3000)} />
+                        <CustomButton title="Acessar" backgroundColor={colors.primaryColor} paddingH={22} paddingV={15} borderRadius={18} color={colors.whiteColor} fontWeight="bold" size={15} onPress={() => navigation.navigate("CreateReports")} />
                     </View>
                 </View>
             </View>

@@ -2,8 +2,12 @@ import { View, Image, StyleSheet, Dimensions, TouchableOpacity } from "react-nat
 import { ScrollView, GestureHandlerRootView } from "react-native-gesture-handler"
 import { CustomText } from "../../../CustomText/CustomText"
 import { colors } from "../../../../assets/colors"
+import { StackTypes } from '../../../routes/StackNavigator';
+import { useNavigation } from "@react-navigation/native";
 
 export const SummerArticle: React.FC = () => {
+    const navigation = useNavigation<StackTypes>();
+
 
     return (
         <GestureHandlerRootView style={styles.wrapper}>
@@ -36,7 +40,7 @@ export const SummerArticle: React.FC = () => {
                         </View>
                     </View>
                             <View>
-                                <TouchableOpacity style={styles.clickableCardContainer}>
+                                <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Caatinga")}>
                                     <Image source={require("../../../../assets/Caatinga.png")} style={styles.clickableCardImage} resizeMode="contain" />
                                     <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>
@@ -49,7 +53,7 @@ export const SummerArticle: React.FC = () => {
                             </View>
 
                             <View>
-                                <TouchableOpacity style={styles.clickableCardContainer}>
+                                <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Cafe")}>
                                     <Image source={require("../../../../assets/lavoura.png")} style={styles.clickableCardImage} resizeMode="contain" />
                                     <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>
@@ -62,7 +66,7 @@ export const SummerArticle: React.FC = () => {
                             </View>
 
                             <View style={styles.clickableCardWrapper}>
-                                <TouchableOpacity style={styles.clickableCardContainer}>
+                                <TouchableOpacity style={styles.clickableCardContainer} onPress={() => navigation.navigate("Safras")}>
                                     <Image source={require("../../../../assets/safra-em-alta.png")} style={styles.clickableCardImage} resizeMode="contain" />
                                     <View style={styles.clickableCard}>
                                         <View style={styles.clickableCardText}>
